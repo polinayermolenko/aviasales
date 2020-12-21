@@ -1,4 +1,81 @@
-.App {
-  text-align: center;
-  color: green;
+@media (min-width: 320px) {
+  .app {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 0 10px 30px;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4A4A4A;
+    background-color: #F3F7FA;
+  }
+}
+
+@media (min-width: 768px) {
+  .app {
+    width: 960px;
+    min-height: 735px;
+    margin: 0 auto;
+    padding: 0 50px 30px;
+  }
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+}
+
+@media (min-width: 320px) {
+  .app-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 320px) {
+  .filters {
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .filters {
+    width: 320px;
+    align-self: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 320px) {
+  .tickets {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 520px) {
+  .tickets {
+    width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  .tickets {
+    width: 500px;
+  }
 }
