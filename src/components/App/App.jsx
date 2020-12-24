@@ -2,8 +2,9 @@ import React from 'react';
 import classes from './App.module.scss';
 import logo from '../../img/logo.svg';
 import TicketFilter from '../TicketFilter/TicketFilter';
-import TicketSorting from '../TicketSorting/TicketSorting';
 import TicketList from '../TicketList/TicketList';
+import withTicketService from '../Hoc/withTicketService';
+import TicketSortingList from '../TicketSortingList/TicketSortingList';
 
 const App = () => (
   <div className={classes.app}>
@@ -15,11 +16,11 @@ const App = () => (
         <TicketFilter />
       </section>
       <section className={classes.tickets}>
-        <TicketSorting />
+        <TicketSortingList />
         <TicketList />
       </section>
     </main>
   </div>
 );
 
-export default App;
+export default withTicketService()(App);
