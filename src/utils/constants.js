@@ -8,12 +8,12 @@ const SORT_BUTTONS = [
   { name: 'Самый быстрый', id: 'fast' },
 ];
 
-export const FILTER_BUTTONS = [
+const FILTER_BUTTONS = [
   { name: 'Все', id: 'all' },
-  { name: 'Без пересадок', id: 'no-transfer' },
-  { name: '1 пересадка', id: 'one' },
-  { name: '2 пересадки', id: 'two' },
-  { name: '3 пересадки', id: 'three' },
+  { name: 'Без пересадок', id: 0 },
+  { name: '1 пересадка', id: 1 },
+  { name: '2 пересадки', id: 2 },
+  { name: '3 пересадки', id: 3 },
 ];
 
-export { Sorting, SORT_BUTTONS };
+export { Sorting, SORT_BUTTONS, FILTER_BUTTONS };

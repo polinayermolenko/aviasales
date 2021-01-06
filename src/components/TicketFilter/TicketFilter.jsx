@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setActiveFilter } from '../../actions/actions';
 import { FILTER_BUTTONS } from '../../utils/constants';
 
 import classes from './TicketFilter.module.scss';
 
-// eslint-disable-next-line react/prop-types
-const TicketFilter = ({ setFilter }) => {
+const checkActiveFilter = (filters, currentFilterId) => filters.some((el) => el === currentFilterId);
+
+const TicketFilter = ({ activeFilters, setFilter }) => {
   const elements = FILTER_BUTTONS.map((item) => {
     const { id, name } = item;
     return (
@@ -14,7 +18,8 @@ const TicketFilter = ({ setFilter }) => {
           className={classes.filter__checkbox}
           value={name}
           type="checkbox"
-          onChange={() => setFilter(id)}
+          checked={checkActiveFilter(activeFilters, id)}
+          onChange={() => setFilter({ filterId: id })}
         />
         <label className={classes.filter__label} htmlFor={id}>
           {name}
@@ -31,4 +36,15 @@ const TicketFilter = ({ setFilter }) => {
   );
 };
 
-export default TicketFilter;
+TicketFilter.propTypes = {
+  setFilter: PropTypes.func.isRequired,
+  activeFilters: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+};
+
+const mapStateToProps = (state) => ({ activeFilters: state.activeFilters });
+
+const mapDispatchToProps = {
+  setFilter: setActiveFilter,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TicketFilter);

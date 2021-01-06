@@ -1,4 +1,6 @@
 export default class TicketService {
+  id = null;
+
   async getResponse(url) {
     const res = await fetch(url);
     if (!res.ok) {
@@ -10,15 +12,18 @@ export default class TicketService {
   }
 
   async getSearchId() {
-    const { searchId } = await this.getResponse(`https://front-test.beta.aviasales.ru/search`);
-    return searchId;
+    if (!this.id) {
+      const { searchId } = await this.getResponse(`https://front-test.beta.aviasales.ru/search`);
+      this.id = searchId;
+    }
+    return this.id;
   }
 
-  async getTickets(searchId) {
-    const res = await this.getResponse(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
+  async getTickets() {
+    const res = await this.getResponse(`https://front-test.beta.aviasales.ru/tickets?searchId=${this.id}`);
     return res;
   }
 }
 
 // const tic = new TicketService();
-// tic.getSearchId().then(res => tic.getTickets(res).then(body => console.log(body.tickets.slice(0, 25))));
+// tic.getSearchId().then(() => tic.getTickets().then(body => console.log(body.tickets.slice(0, 25))));

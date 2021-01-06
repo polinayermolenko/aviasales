@@ -1,31 +1,11 @@
 import { combineReducers } from 'redux';
-import { Sorting } from '../utils/constants';
-
-const sort = (state = Sorting.CHEEP, action) => {
-  switch (action.type) {
-    case 'SET_ACTIVE_SORTING':
-      return action.id;
-    default:
-      return state;
-  }
-};
-
-const initialState = {
-  tickets: [],
-};
-const tickets = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case 'TICKETS_LOADED':
-      return {
-        tickets: [...state.tickets, ...payload],
-      };
-    default:
-      return state;
-  }
-};
+import sort from './sort';
+import loadTickets from './loadTickets';
+import filters from './filters';
 
 const reducer = combineReducers({
   activeSorting: sort,
-  ticketsReducer: tickets,
+  ticketsReducer: loadTickets,
+  activeFilters: filters,
 });
 export default reducer;
