@@ -18,7 +18,7 @@ const loadTickets = (state = initialState, { type, payload = {} }) => {
 
     case 'FETCH_TICKETS_FAILLURE':
       return {
-        tickets: [...state.tickets, ...tickets, error],
+        tickets: [...state.tickets, ...tickets],
         stop,
         error,
       };

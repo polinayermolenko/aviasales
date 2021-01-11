@@ -1,9 +1,9 @@
 import { Sorting } from '../utils/constants';
 
-const sort = (state = Sorting.CHEEP, action) => {
-  switch (action.type) {
+const sort = (state = Sorting.CHEEP, { type, payload }) => {
+  switch (type) {
     case 'SET_ACTIVE_SORTING':
-      return action.id;
+      return payload;
     default:
       return state;
   }
