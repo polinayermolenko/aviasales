@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './App.module.scss';
 import logo from '../../img/logo.svg';
-import TicketFilter from '../TicketFilter/TicketFilter';
 import withTicketService from '../Hoc/withTicketService';
 import TicketSortingList from '../TicketSortingList/TicketSortingList';
 import TicketListContainer from '../../containers/TicketListContainer/TicketListContainer';
+import TicketFilterContainer from '../../containers/TicketFilterContainer/TicketFilterContainer';
 
 const App = () => (
   <div className={classes.app}>
@@ -13,7 +13,7 @@ const App = () => (
     </header>
     <main className={classes['app-main']}>
       <section className={classes.filters}>
-        <TicketFilter />
+        <TicketFilterContainer />
       </section>
       <section className={classes.tickets}>
         <TicketSortingList />

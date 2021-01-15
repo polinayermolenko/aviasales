@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import sort from './sort';
 import loadTickets from './loadTickets';
-import filters from './filters';
+import filter from './filter';
 
 const reducer = combineReducers({
   activeSorting: sort,
   ticketsReducer: loadTickets,
-  activeFilters: filters,
+  activeFilters: filter,
 });
 export default reducer;

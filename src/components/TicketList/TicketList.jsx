@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Ticket from '../Ticket/Ticket';
 import classes from './TicketList.module.scss';
-import { formatData } from '../../actions/actions';
+import formatData from '../../services/TicketTransformService';
 
 const TicketList = ({ tickets }) => {
   const data = tickets.map(formatData);
@@ -27,5 +27,4 @@ TicketList.defaultProps = {
 
 TicketList.propTypes = {
   tickets: PropTypes.instanceOf(Array),
-  // tickets: PropTypes.arrayOf(PropTypes.object),
 };

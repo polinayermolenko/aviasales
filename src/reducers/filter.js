@@ -1,14 +1,4 @@
-const Filter = {
-  ALL: 'all',
-  NO_TRANSFER: 0,
-  ONE_TRANSFER: 1,
-  TWO_TRANSFERS: 2,
-  THREE_TRANSFERS: 3,
-};
-
-const FILTERS = [Filter.ALL, Filter.NO_TRANSFER, Filter.ONE_TRANSFER, Filter.TWO_TRANSFERS, Filter.THREE_TRANSFERS];
-
-const FILTERS_LENGTH = Object.keys(Filter).length;
+import { Filter, FILTERS, FILTERS_LENGTH } from '../utils/constants';
 
 const initialState = FILTERS;
 

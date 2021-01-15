@@ -24,6 +24,3 @@ export default class TicketService {
     return res;
   }
 }
-
-// const tic = new TicketService();
-// tic.getSearchId().then(() => tic.getTickets().then(body => console.log(body.tickets.slice(0, 25))));

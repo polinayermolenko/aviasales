@@ -16,4 +16,18 @@ const FILTER_BUTTONS = [
   { name: '3 пересадки', id: 3 },
 ];
 
-export { Sorting, SORT_BUTTONS, FILTER_BUTTONS };
+const Filter = {
+  ALL: 'all',
+  NO_TRANSFER: 0,
+  ONE_TRANSFER: 1,
+  TWO_TRANSFERS: 2,
+  THREE_TRANSFERS: 3,
+};
+
+const FILTERS = [Filter.ALL, Filter.NO_TRANSFER, Filter.ONE_TRANSFER, Filter.TWO_TRANSFERS, Filter.THREE_TRANSFERS];
+
+const FILTERS_LENGTH = Object.keys(Filter).length;
+
+const TICKETS_PER_PERCENT = 90;
+
+export { Sorting, SORT_BUTTONS, FILTER_BUTTONS, Filter, FILTERS, FILTERS_LENGTH, TICKETS_PER_PERCENT };

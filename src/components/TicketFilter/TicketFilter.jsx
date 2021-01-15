@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setActiveFilter } from '../../actions/actions';
 import { FILTER_BUTTONS } from '../../utils/constants';
+import { checkActiveFilter } from '../../utils/functions';
 
 import classes from './TicketFilter.module.scss';
-
-const checkActiveFilter = (filters, currentFilterId) => filters.some((el) => el === currentFilterId);
 
 const TicketFilter = ({ activeFilters, setFilter }) => {
   const elements = FILTER_BUTTONS.map((item) => {
@@ -41,10 +38,4 @@ TicketFilter.propTypes = {
   activeFilters: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
 };
 
-const mapStateToProps = (state) => ({ activeFilters: state.activeFilters });
-
-const mapDispatchToProps = {
-  setFilter: setActiveFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TicketFilter);
+export default TicketFilter;
