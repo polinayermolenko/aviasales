@@ -7,7 +7,6 @@ import TicketService from './services/TicketService';
 import { TicketServiceProvider } from './components/TicketServiceContext/TicketServiceContext';
 
 import './index.scss';
-import 'antd/dist/antd.css';
 
 const ticketService = new TicketService();
 

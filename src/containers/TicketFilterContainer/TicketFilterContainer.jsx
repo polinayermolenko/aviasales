@@ -8,15 +8,17 @@ const TicketFilterContainer = ({ activeFilters, setFilter }) => (
   <TicketFilter activeFilters={activeFilters} setFilter={setFilter} />
 );
 
-TicketFilterContainer.propTypes = {
-  setFilter: PropTypes.func.isRequired,
-  activeFilters: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
-};
+const getActiveFilters = ({ activeFilters }) => activeFilters;
 
-const mapStateToProps = ({ activeFilters }) => ({ activeFilters });
+const mapStateToProps = (state) => ({ activeFilters: getActiveFilters(state) });
 
 const mapDispatchToProps = {
   setFilter: setActiveFilter,
+};
+
+TicketFilterContainer.propTypes = {
+  setFilter: PropTypes.func.isRequired,
+  activeFilters: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TicketFilterContainer);

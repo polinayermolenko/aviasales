@@ -5,15 +5,12 @@ import { Progress, Alert } from 'antd';
 import withTicketService from '../../components/Hoc/withTicketService';
 import TicketList from '../../components/TicketList/TicketList';
 import { transformTickets } from '../../actions/actions';
-import { filterTickets, sortTickets } from '../../utils/functions';
 import useLoading from './useLoading';
+import { getError, getStop, getTickets, getDisplayedTickets, getFilters } from './selectors';
 
 const TicketListContainer = (props) => {
-  const { tickets, ticketService, loadTickets, stop, activeSorting, activeFilters } = props;
+  const { tickets, ticketService, loadTickets, stop, activeFilters, displayedTickets } = props;
   const { isLoadingFinished, loadingPercent } = useLoading(loadTickets, ticketService, tickets, stop);
-
-  const filteredTickets = filterTickets(tickets, activeFilters);
-  const sortedTickets = sortTickets(filteredTickets, activeSorting);
 
   if (!activeFilters.length) {
     return (
@@ -22,7 +19,7 @@ const TicketListContainer = (props) => {
   }
 
   if (isLoadingFinished) {
-    return <TicketList tickets={sortedTickets.slice(0, 5)} />;
+    return <TicketList tickets={displayedTickets.slice(0, 5)} />;
   }
 
   return (
@@ -33,17 +30,17 @@ const TicketListContainer = (props) => {
         showInfo={false}
         status="active"
       />
-      <TicketList tickets={sortedTickets.slice(0, 5)} />
+      <TicketList tickets={displayedTickets.slice(0, 5)} />
     </>
   );
 };
 
-const mapStateToProps = ({ ticketsReducer: { tickets, stop, error }, activeSorting, activeFilters }) => ({
-  tickets,
-  stop,
-  error,
-  activeSorting,
-  activeFilters,
+const mapStateToProps = (state) => ({
+  tickets: getTickets(state),
+  stop: getStop(state),
+  error: getError(state),
+  activeFilters: getFilters(state),
+  displayedTickets: getDisplayedTickets(state),
 });
 
 // const mapDispatchToProps = (dispatch) => ({ loadTickets: (service) => dispatch(transformTickets(service)) });
@@ -62,8 +59,8 @@ TicketListContainer.propTypes = {
   stop: PropTypes.bool.isRequired,
   ticketService: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]))
     .isRequired,
-  activeSorting: PropTypes.string.isRequired,
-  activeFilters: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
+  activeFilters: PropTypes.instanceOf(Array).isRequired,
+  displayedTickets: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default withTicketService()(connect(mapStateToProps, mapDispatchToProps)(TicketListContainer));

@@ -19,7 +19,7 @@ export default class TicketService {
     return this.id;
   }
 
-  async getTickets() {
+  async receiveTickets() {
     const res = await this.getResponse(`https://front-test.beta.aviasales.ru/tickets?searchId=${this.id}`);
     return res;
   }

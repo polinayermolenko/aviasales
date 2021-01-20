@@ -5,6 +5,7 @@ import withTicketService from '../Hoc/withTicketService';
 import TicketSortingList from '../TicketSortingList/TicketSortingList';
 import TicketListContainer from '../../containers/TicketListContainer/TicketListContainer';
 import TicketFilterContainer from '../../containers/TicketFilterContainer/TicketFilterContainer';
+import 'antd/dist/antd.css';
 
 const App = () => (
   <div className={classes.app}>

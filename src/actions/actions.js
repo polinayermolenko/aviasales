@@ -9,7 +9,7 @@ export const setActiveFilter = (payload) => ({ type: 'SET_ACTIVE_FILTER', payloa
 export const transformTickets = (service) => (dispatch) => {
   service.getSearchId().then(() =>
     service
-      .getTickets()
+      .receiveTickets()
       .then(({ tickets, stop }) => {
         dispatch(ticketsLoaded({ tickets, stop }));
       })
