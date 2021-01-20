@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TICKETS_PER_PERCENT } from '../../utils/constants';
 
-const useTickets = (loadTickets, ticketService, tickets, stop) => {
+const useLoadTicketsEffect = (loadTickets, ticketService, tickets, stop) => {
   const [isLoadingFinished, setLoadingStatus] = useState(false);
   const [loadingPercent, setLoadingPercent] = useState(0);
 
@@ -24,4 +24,4 @@ const useTickets = (loadTickets, ticketService, tickets, stop) => {
   return { isLoadingFinished, loadingPercent };
 };
 
-export default useTickets;
+export default useLoadTicketsEffect;

@@ -5,12 +5,12 @@ import { Progress, Alert } from 'antd';
 import withTicketService from '../../components/Hoc/withTicketService';
 import TicketList from '../../components/TicketList/TicketList';
 import { transformTickets } from '../../actions/actions';
-import useLoading from './useLoading';
+import useLoadTicketsEffect from './useLoadTicketsEffect';
 import { getError, getStop, getTickets, getDisplayedTickets, getFilters } from './selectors';
 
 const TicketListContainer = (props) => {
   const { tickets, ticketService, loadTickets, stop, activeFilters, displayedTickets } = props;
-  const { isLoadingFinished, loadingPercent } = useLoading(loadTickets, ticketService, tickets, stop);
+  const { isLoadingFinished, loadingPercent } = useLoadTicketsEffect(loadTickets, ticketService, tickets, stop);
 
   if (!activeFilters.length) {
     return (
